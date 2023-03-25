@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     int pageNumber = 1;
     Boolean isScrolling  = false;
     int currentItems,totalItems,scrollOutItems;
-    String url = "https://api.pexels.com/v1/curated/?page=\"+pageNumber+\"&per_page=80";
+    //String url = "https://api.pexels.com/v1/curated/?page=\"+pageNumber+ \"&per_page=80";
 
 
     @Override
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 totalItems = gridLayoutManager.getItemCount();
                 scrollOutItems = gridLayoutManager.findFirstCompletelyVisibleItemPosition();
 
-                if (isScrolling && (currentItems+scrollOutItems == totalItems)){
+                if (isScrolling && (currentItems + scrollOutItems == totalItems)){
                     isScrolling = false;
                     fetchWallpaper();
                 }
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
         // Uri https://api.pexels.com/v1/curated/?page="+pageNumber+"&per_page=80
     public void fetchWallpaper(){
-        StringRequest request = new StringRequest(Request.Method.GET, url,
+        StringRequest request = new StringRequest(Request.Method.GET, "https://api.pexels.com/v1/curated/?page="+pageNumber+"&per_page=80",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -118,8 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
                             wallpaperAdapter.notifyDataSetChanged();
                             pageNumber++;
-                        }catch (JSONException e){
 
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                            Toast.makeText(MainActivity.this, "ERROR"+ e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -166,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String query = editText.getText().toString().toLowerCase();
 
-                    url = "https://api.pexels.com/v1/search/?page="+pageNumber+"&per_page=80&query="+query;
+                   // url = "https://api.pexels.com/v1/search/?page="+pageNumber+"&per_page=80&query="+query;
                     wallpaperModelList.clear();
                     fetchWallpaper();
 
