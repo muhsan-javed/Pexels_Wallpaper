@@ -1,4 +1,4 @@
-package com.mjtech.pexelswallpaper;
+package com.mjtech.pexelswallpaper.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.mjtech.pexelswallpaper.R;
+import com.mjtech.pexelswallpaper.Models.WallpaperModel;
+import com.mjtech.pexelswallpaper.activities.FullScreenWallpaper;
 
 import java.util.List;
 
@@ -38,7 +41,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperViewHolder> 
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,FullScreenWallpaper.class)
+                context.startActivity(new Intent(context, FullScreenWallpaper.class)
                 .putExtra("originalUrl",wallpaperModelList.get(position).getOriginalUrl()));
             }
         });

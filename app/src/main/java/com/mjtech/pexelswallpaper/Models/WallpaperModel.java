@@ -1,4 +1,4 @@
-package com.mjtech.pexelswallpaper;
+package com.mjtech.pexelswallpaper.Models;
 
 public class WallpaperModel {
 

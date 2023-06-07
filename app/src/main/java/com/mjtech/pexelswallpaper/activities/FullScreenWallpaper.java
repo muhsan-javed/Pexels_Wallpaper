@@ -1,4 +1,4 @@
-package com.mjtech.pexelswallpaper;
+package com.mjtech.pexelswallpaper.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
+import com.mjtech.pexelswallpaper.R;
 
 import java.io.IOException;
 import java.util.Objects;

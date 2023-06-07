@@ -13,10 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.PexelsWallpaper">
-        <activity android:name=".FullScreenWallpaper">
+        <activity android:name=".activities.FullScreenWallpaper">
 
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivityKotlin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
