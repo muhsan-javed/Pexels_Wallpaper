@@ -1,6 +1,7 @@
 package com.mjtech.pexelswallpaper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import android.app.DownloadManager;
 import android.app.WallpaperManager;
@@ -17,8 +18,11 @@ import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class FullScreenWallpaper extends AppCompatActivity {
+
+    AppCompatImageButton btnBackButton;
     PhotoView photoView;
     String originalUrl = "";
     @Override
@@ -26,7 +30,7 @@ public class FullScreenWallpaper extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screen_wallpaper);
 
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         Intent intent = getIntent();
         originalUrl = intent.getStringExtra("originalUrl");
@@ -34,6 +38,12 @@ public class FullScreenWallpaper extends AppCompatActivity {
         photoView = findViewById(R.id.photoView);
 
         Glide.with(this).load(originalUrl).into(photoView);
+
+        btnBackButton = findViewById(R.id.btnBackButton);
+
+        btnBackButton.setOnClickListener(v -> {
+            finish();
+        });
 
     }
 
