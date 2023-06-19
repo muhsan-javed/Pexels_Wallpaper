@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
+
+        // ScrollListener Function
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -85,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
                     isScrolling = false;
                     fetchWallpaper();
                 }
-
-
             }
         });
-        fetchWallpaper();
 
+        fetchWallpaper(); // All data fetch fun api
+
+        // Search Function
         searchOption.setOnClickListener(v -> {
             String query = edittext.getText().toString().trim().toLowerCase();
             wallpaperModelList.clear();
@@ -99,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
                         @SuppressLint("NotifyDataSetChanged")
                         @Override
                         public void onResponse(String response) {
-
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
 
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }, error -> {
-
+                             Toast.makeText(this, "Data Not Fetch Api", Toast.LENGTH_SHORT).show();
             }) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
